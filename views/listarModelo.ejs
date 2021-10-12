@@ -1,0 +1,16 @@
+<%-include ('partials/head.ejs')-%>
+<%-include('partials/nav.ejs');-%>
+<body>
+    <% modelo.forEach(modelo => { %>
+        <div class="container">
+            <h1>
+                <%= modelo.marca %> </a>
+                <%= modelo.cor %> </a>
+                <%= modelo.preco %> </a>
+                <%= modelo.tipo %> </a>   
+            </h1>
+        </div>
+        
+    <% }); %> 
+    
+</body>

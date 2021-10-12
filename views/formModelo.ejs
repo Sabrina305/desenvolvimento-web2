@@ -1,0 +1,38 @@
+<%-include ('partials/head.ejs')-%>
+<%-include('partials/nav.ejs');-%>
+<div class="container">
+    <form method="POST" action="/salvar">
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="marca" class="form-label">Marca:</label>
+                <input type="text" name="marca" class="form-control" id="marca" aria-describedby="marca">
+            </div>
+
+            <div class="col-md">
+                <label for="cor" class="form-label">Cor:</label>
+                <input type="text" name="cor" class="form-control" id="cor">
+            </div>
+            <div class="col-md">
+                <label for="preco" class="form-label">Preço:</label>
+                <input type="number" name="preco" class="form-control" id="preco" aria-describedby="quantidade">
+            </div>
+        </div>
+        <br>
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="tipo" class="form-label">Escolha o Tipo:</label>
+               <select class="form-select" name="tipo" aria-label="Default select example">
+                    <option selected>Tipo do Calçado...</option>
+                    <option value="Tênis">Tênis</option>
+                    <option value="Sandália">Sandália</option>
+                    <option value="Chinelo">Chinelo</option>
+                    <option value="Salto">Salto</option>
+                    <option value="Sapatilha">Sapatilha</option>
+                </select> 
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">Salvar</button>
+      </form>
+</div>
+<%-include('partials/footer.ejs');-%>
