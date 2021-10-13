@@ -2,11 +2,44 @@
 <%-include('partials/nav.ejs');-%>
 <body>
     <div class="container">
-        
         <h3><%=mostrarEspe.marca%></h3>
         <h3><%=mostrarEspe.cor%></h3>
         <h3><%=mostrarEspe.preco%></h3>
         <h3><%=mostrarEspe.tipo%></h3>
-    
     </div>
+    <div class="container">
+       
+        <h1>LISTAGEM DO MODELO</h1>
+       
+    </div>
+     <hr>
+    <br>
+    <div class="container">
+        <table class="table table-success table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Cor</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Tipo</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <% modelo.forEach(modelo => { %>
+            <tbody>
+                <tr>
+                <td><%=mostrarEspe.marca%></td>
+                <td><%=mostrarEspe.cor%></td>
+                <td><%=mostrarEspe.preco%></td>
+                <td><%=mostrarEspe.tipo%></td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Editar</button></div>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Apagar</button></div>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Right</button></div>
+                  </td>
+                </tr>
+            </tbody>
+        <% }); %>
+        </table>
+    </div>  
 </body>

@@ -26,7 +26,7 @@ app.get("/", (req,res)=>{
     });
 });
 app.get("/listarModelo", (req,res)=>{
-    CreatModelo.findAll({raw: true, order: [['marca', 'DESC']]}).then(modelo=>{
+    CreatModelo.findAll({raw: true, order: [['marca', 'ASC']]}).then(modelo=>{
             res.render("listarModelo", {
                 modelo:modelo
             });
@@ -37,6 +37,7 @@ app.get("/formModelo",(req,res)=>{
 
     });
 });
+//não esta pegando
 app.get("/modeloEspe/:marca",(req,res)=>{
     var marca = req.params.marca;
     CreatModelo.findOne({where : {marca:marca}
@@ -45,12 +46,14 @@ app.get("/modeloEspe/:marca",(req,res)=>{
             res.render("modeloEspe",{
                 mostrarEspe:mostrarEspe
             });
-        }else{
-            //res.redirect("/")
+        }
+        else{
+           //res.redirect("/listarModelo")
             res.send("Não achei!")
         }
     })
 });
+//não esta pegando
 app.post("/salvar",(req,res)=>{
     var marca = req.body.marca;
     var cor = req.body.cor;
