@@ -20,6 +20,6 @@ const CreatModelo = connection.define('creatModelo',{
     }
 });
 CreatModelo .sync({force:false}).then(()=>{
-    console.log("Tabela criada!");
+    console.log("Tabela Modelo criada!");
 });
 module.exports = CreatModelo;

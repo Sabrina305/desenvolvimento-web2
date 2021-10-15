@@ -1,0 +1,43 @@
+<%-include ('../partials/head.ejs')-%>
+<%-include('../partials/nav.ejs');-%>
+<br>
+<div class="container">
+    <form method="POST" action="/salvarCliente">
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" name="nome" class="form-control" id="nome" aria-describedby="nome">
+            </div>
+
+            <div class="col-md">
+                <label for="cidade" class="form-label">Cidade:</label>
+                <input type="text" name="cidade" class="form-control" id="cidade">
+            </div>
+            <div class="col-md">
+                <label for="cpf" class="form-label">CPF:</label>
+                <input type="number" name="cpf" class="form-control" id="cpf" aria-describedby="cpf">
+            </div>
+            
+        </div>
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="bairro" class="form-label">Bairro:</label>
+                <input type="text" name="bairro" class="form-control" id="bairro">
+            </div>
+            <div class="col-md">
+                <label for="rua" class="form-label">Rua:</label>
+                <input type="text" name="rua" class="form-control" id="rua">
+            </div>
+            <div class="col-md">
+                <label for="numbCasa" class="form-label">Número da residência:</label>
+                <input type="number" name="numbCasa" class="form-control" id="numbCasa">
+            </div>
+        </div>
+        <br>
+        
+        
+        <br>
+        <button type="submit" class="btn btn-success">Salvar</button>
+      </form>
+</div>
+<%-include('../partials/footer.ejs');-%>

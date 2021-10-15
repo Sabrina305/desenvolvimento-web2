@@ -2,14 +2,14 @@ const express = require('express');
 const CreatModelo = require('../criarTabelas/CreatModelo');
 const router = express.Router();
 
-router.get("/lists", (req,res)=>{
+router.get("/lists/listarModelo", (req,res)=>{
     CreatModelo.findAll({raw: true, order: [['marca', 'ASC']]}).then(modelos=>{
             res.render("lists/listarModelo", {
                 modelos:modelos
             });
         });  
 });
-router.get("/forms",(req,res)=>{
+router.get("/forms/formModelo",(req,res)=>{
     res.render("forms/formModelo", {
 
     });
@@ -42,7 +42,7 @@ router.post("/salvar",(req,res)=>{
         preco:preco,
         tipo:tipo
     }).then(()=>{
-        res.redirect("/");
+        res.redirect("/lists/listarModelo");
     })
 })
 

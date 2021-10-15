@@ -1,0 +1,47 @@
+<%-include ('../partials/head.ejs');-%>
+<%-include('../partials/nav.ejs');-%>
+
+<body>
+     <hr>
+    <div class="container">
+       
+        <h1>LISTAGEM DOS CLIENTES</h1>
+       
+    </div>
+     <hr>
+    <br>
+    <div class="container">
+        <table class="table table-success table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Bairro</th>
+                <th scope="col">Rua</th>
+                <th scope="col">Número da Residência</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <% clientes.forEach(cliente => { %>
+            <tbody>
+                <tr>
+                <td> <%= cliente.nome %></td>
+                <td><%= cliente.cidade %></td>
+                <td><%= cliente.cpf %></td>
+                <td><%= cliente.bairro %></td>
+                <td><%= cliente.rua %></td>
+                <td><%= cliente.numbCasa %></td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Editar</button></div>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Apagar</button></div>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Right</button></div>
+                  </td>
+                </tr>
+            </tbody>
+        <% }); %>
+        </table>
+    </div>  
+</body>
+<%-include('../partials/footer.ejs');-%>
+</html>
