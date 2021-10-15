@@ -1,5 +1,6 @@
-<%-include ('partials/head.ejs')-%>
-<%-include('partials/nav.ejs');-%>
+<%-include ('../partials/head.ejs');-%>
+<%-include('../partials/nav.ejs');-%>
+
 <body>
      <hr>
     <div class="container">
@@ -20,7 +21,7 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <% modelo.forEach(modelo => { %>
+        <% modelos.forEach(modelo => { %>
             <tbody>
                 <tr>
                 <td> <%= modelo.marca %></td>
@@ -38,3 +39,5 @@
         </table>
     </div>  
 </body>
+<%-include('../partials/footer.ejs');-%>
+</html>
