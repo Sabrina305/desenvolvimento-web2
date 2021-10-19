@@ -1,0 +1,41 @@
+<%-include ('../partials/head.ejs');-%>
+<%-include('../partials/nav.ejs');-%>
+
+<body>
+     <hr>
+    <div class="container">
+       
+        <h1>LISTAGEM DOS EMPREGADOS</h1>
+       
+    </div>
+     <hr>
+    <br>
+    <div class="container">
+        <table class="table table-success table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">E-Mail</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <% usuarios.forEach(usuario => { %>
+            <tbody>
+                <tr>
+                <td> <%= usuario.id %></td>
+                <td><%= usuario.nome%></td>
+                <td><%= usuario.email%></td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Editar</button></div>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Apagar</button></div>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Right</button></div>
+                  </td>
+                </tr>
+            </tbody>
+        <% }); %>
+        </table>
+    </div>  
+</body>
+<%-include('../partials/footer.ejs');-%>
+</html>

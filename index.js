@@ -6,7 +6,8 @@ app.use(bodyParser.json());
 
 const connection = require("./banco/conector");
 const modeloController = require("./controles/modelosController");
-const clienteController = require("./controles/clientesController")
+const clienteController = require("./controles/clientesController");
+const usuarioController = require ("./controles/usuarioController");
 connection
     .authenticate()
     .then(()=>{
@@ -22,6 +23,7 @@ app.use(express.static("views"));
 
 app.use("/", modeloController);
 app.use("/",clienteController);
+app.use("/",usuarioController);
 app.listen(8000,()=>{ console.log("Programa em execução")});
 
 app.get("/", (req,res)=>{

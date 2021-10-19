@@ -1,0 +1,26 @@
+<%-include ('../partials/head.ejs')-%>
+<%-include('../partials/nav.ejs');-%>
+<br>
+<div class="container">
+    <form method="POST" action="/salvarUsuario">
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" name="nome" class="form-control" id="nome" aria-describedby="nome">
+            </div>
+
+            <div class="col-md">
+                <label for="email" class="form-label">E-Mail:</label>
+                <input type="text" name="email" class="form-control" id="email">
+            </div>
+            <div class="col-md">
+                <label for="senha" class="form-label">Senha:</label>
+                <input type="password" name="senha" class="form-control" id="senha">
+            </div>
+            
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">Salvar</button>
+      </form>
+</div>
+<%-include('../partials/footer.ejs');-%>
