@@ -14,23 +14,22 @@ router.get("/forms/formModelo",(req,res)=>{
 
     });
 });
-//não esta pegando
-router.get("/modeloEspe/:marca",(req,res)=>{
-    var marca = req.params.marca;
-    CreatModelo.findOne({where : {marca:marca}
-    }).then(mostrarEspe =>{
-        if(mostrarEspe != undefined){
+
+router.get("/modeloEspe/:id",(req,res)=>{
+    var id = req.params.id;
+    CreatModelo.findOne({where : {id:id}
+    }).then(specific =>{
+        if(specific != undefined){
             res.render("modeloEspe",{
-                mostrarEspe:mostrarEspe
+                specific:specific
             });
         }
         else{
-           //res.redirect("/listarModelo")
-            res.send("Não achei!")
+           res.redirect("/lists/listarModelo")
         }
     })
 });
-//não esta pegando
+
 router.post("/salvar",(req,res)=>{
     var marca = req.body.marca;
     var cor = req.body.cor;

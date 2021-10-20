@@ -1,0 +1,43 @@
+<%-include ('partials/head.ejs')-%>
+<%-include('partials/nav.ejs');-%>
+<body>
+    <hr>
+    <div class="container">
+       
+        <h1>LISTAGEM DO CLIENTE</h1>
+       
+    </div>
+     <hr>
+    <br>
+    <div class="container">
+        <table class="table table-success table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Bairro</th>
+                    <th scope="col">Rua</th>
+                    <th scope="col">N° da Residência</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                <td><%=specific.nome%></td>
+                <td><%=specific.cidade%></td>
+                <td><%=specific.cpf%></td>
+                <td><%=specific.bairro%></td>
+                <td><%=specific.rua%></td>
+                <td><%=specific.numbCasa%></td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Editar</button></div>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Apagar</button></div>
+                    <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Right</button></div>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>  
+</body>

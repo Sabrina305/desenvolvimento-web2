@@ -14,23 +14,20 @@ router.get("/forms/formCliente",(req,res)=>{
 
     });
 });
-//não esta pegando
 router.get("/clienteEspe/:id",(req,res)=>{
     var id = req.params.id;
     CreatCliente.findOne({where : {id:id}
-    }).then(mostrarEspe =>{
-        if(mostrarEspe != undefined){
+    }).then(specific =>{
+        if(specific != undefined){
             res.render("clienteEspe",{
-                mostrarEspe:mostrarEspe
+                specific:specific
             });
         }
         else{
-           //res.redirect("/listarModelo")
-            res.send("Não achei!")
+           res.redirect("/lists/listarClientes");
         }
     })
 });
-//não esta pegando
 router.post("/salvarCliente",(req,res)=>{
     var nome = req.body.nome;
     var cidade = req.body.cidade;

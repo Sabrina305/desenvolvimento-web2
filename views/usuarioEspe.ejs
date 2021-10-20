@@ -4,7 +4,7 @@
     <hr>
     <div class="container">
        
-        <h1>LISTAGEM DO MODELO</h1>
+        <h1>LISTAGEM DO USUÁRIO</h1>
        
     </div>
      <hr>
@@ -13,20 +13,18 @@
         <table class="table table-success table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Cor</th>
-                    <th scope="col">Preço</th>
-                    <th scope="col">Tipo</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-Mail</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
         
             <tbody>
                 <tr>
-                <td><%=specific.marca%></td>
-                <td><%=specific.cor%></td>
-                <td><%=specific.preco%></td>
-                <td><%=specific.tipo%></td>
+                <td><%=specific.id%></td>
+                <td><%=specific.nome%></td>
+                <td><%=specific.email%></td>
                 <td>
                     <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Editar</button></div>
                     <div class="btn-group btn-group-sm" role="group"><button type="button" class="btn btn-outline-dark">Apagar</button></div>

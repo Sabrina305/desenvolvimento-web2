@@ -19,15 +19,14 @@ router.get("/forms/formUsuario",(req,res)=>{
 router.get("/usuarioEspe/:id",(req,res)=>{
     var id = req.params.id;
     CreatUsuario.findOne({where : {id:id}
-    }).then(espeUsuario =>{
-        if(espeUsuario != undefined){
+    }).then(specific =>{
+        if(specific != undefined){
             res.render("usuarioEspe",{
-                espeUsuario:espeUsuario
+                specific:specific
             });
         }
         else{
-           //res.redirect("/listarUsuario")
-            res.send("Não achei!")
+           res.redirect("/lists/listarUsuario");
         }
     })
 });
