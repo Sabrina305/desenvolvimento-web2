@@ -1,0 +1,33 @@
+<%-include ('../partials/head.ejs')-%>
+<%-include('../partials/nav.ejs');-%>
+<br>
+<div class="container">
+    <form method="POST" action="/updateModelo">
+        <input type="hidden" name="id" value="<%- modelo.id %>">
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="marca" class="form-label">Marca:</label>
+                <input type="text" name="marca" value="<%- modelo.marca %>" class="form-control" id="marca" aria-describedby="marca">
+            </div>
+
+            <div class="col-md">
+                <label for="cor" class="form-label">Cor:</label>
+                <input type="text" name="cor" value="<%- modelo.cor %>" class="form-control" id="cor">
+            </div>
+            <div class="col-md">
+                <label for="preco" class="form-label">Preço:</label>
+                <input type="number" name="preco" value="<%- modelo.preco %>" class="form-control" id="preco" >
+            </div>
+            
+        </div>
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="tipo" class="form-label">Tipo:</label>
+                <input type="text" name="tipo" value="<%- modelo.tipo %>" class="form-control" id="tipo">
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-light">Salvar</button>
+      </form>
+</div>
+<%-include('../partials/footer.ejs');-%>

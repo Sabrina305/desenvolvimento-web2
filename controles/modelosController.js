@@ -29,8 +29,26 @@ router.get("/modeloEspe/:id",(req,res)=>{
         }
     })
 });
+router.get("/edit/editModelo/:id",(req,res)=>{
+    var id = req.params.id;
 
-router.post("/salvar",(req,res)=>{
+    CreatModelo.findByPk(id).then(modelo =>{
+        if(isNaN(id)){
+            res.redirect("/lists/listarModelo");
+
+        }
+        if(modelo != undefined){
+            res.render("edit/editModelo",{modelo:modelo});
+        }else{
+            res.redirect("/lists/listarModelo");
+        }
+        
+    }).catch(erro =>{
+        res.redirect("/lists/listarModelo");
+    });
+});
+
+router.post("/saveModelo",(req,res)=>{
     var marca = req.body.marca;
     var cor = req.body.cor;
     var preco = req.body.preco;
@@ -44,5 +62,30 @@ router.post("/salvar",(req,res)=>{
         res.redirect("/lists/listarModelo");
     })
 })
+router.post("/updateModelo",(req,res)=>{
+    var id = req.body.id;
+    var marca = req.body.marca;
+    var cor = req.body.cor;
+    var preco = req.body.preco;
+    var tipo = req.body.tipo;
+    CreatModelo.update({
+        marca:marca,
+        cor:cor,
+        preco:preco,
+        tipo:tipo},{where:{id:id}
 
+    }).then(()=>{
+        res.redirect("/lists/listarModelo");
+    });
+});
+router.post("/deleteModelo",(req,res)=>{
+    var id = req.body.id;
+    CreatModelo.destroy({
+        where: {
+            id:id
+        }
+    }).then(()=>{
+        res.redirect("/lists/listarModelo")
+    })
+});
 module.exports = router; 

@@ -11,7 +11,7 @@ const CreatCliente = connection.define('creatCliente',{
         allowNull: false
     },
     cpf:{
-        type:Sequelize.INTEGER,
+        type:Sequelize.STRING,
         allowNull: false
     },
     bairro:{
@@ -23,7 +23,7 @@ const CreatCliente = connection.define('creatCliente',{
         allowNull:false
     },
     numbCasa:{
-        type:Sequelize.INTEGER,
+        type:Sequelize.STRING,
         allowNull: false
     }
 });

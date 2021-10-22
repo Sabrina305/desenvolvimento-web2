@@ -2,7 +2,7 @@
 <%-include('../partials/nav.ejs');-%>
 <br>
 <div class="container">
-    <form method="POST" action="/salvarCliente">
+    <form method="POST" action="/saveCliente">
         <div class="row g-2">
             <div class="col-md">
                 <label for="nome" class="form-label">Nome:</label>
@@ -15,7 +15,7 @@
             </div>
             <div class="col-md">
                 <label for="cpf" class="form-label">CPF:</label>
-                <input type="number" name="cpf" class="form-control" id="cpf" aria-describedby="cpf">
+                <input type="text" name="cpf" class="form-control" id="cpf" >
             </div>
             
         </div>
@@ -30,11 +30,11 @@
             </div>
             <div class="col-md">
                 <label for="numbCasa" class="form-label">Número da residência:</label>
-                <input type="number" name="numbCasa" class="form-control" id="numbCasa">
+                <input type="text" name="numbCasa" class="form-control" id="numbCasa">
             </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="submit" class="btn btn-outline-light">Salvar</button>
       </form>
 </div>
 <%-include('../partials/footer.ejs');-%>

@@ -1,0 +1,22 @@
+<%-include ('../partials/head.ejs')-%>
+<%-include('../partials/nav.ejs');-%>
+<br>
+<div class="container">
+    <form method="POST" action="/updateUsuario">
+        <input type="hidden" name="id" value="<%- usuario.id %>">
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" name="nome" value="<%- usuario.nome %>" class="form-control" id="nome" aria-describedby="nome">
+            </div>
+
+            <div class="col-md">
+                <label for="email" class="form-label">E-Mail:</label>
+                <input type="text" name="email" value="<%- usuario.email %>" class="form-control" id="email">
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-light">Salvar</button>
+      </form>
+</div>
+<%-include('../partials/footer.ejs');-%>
