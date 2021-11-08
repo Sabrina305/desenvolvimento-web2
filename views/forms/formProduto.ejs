@@ -1,0 +1,61 @@
+<%-include ('../partials/head.ejs')-%>
+<%-include('../partials/nav.ejs');-%>
+<br>
+<div class="container">
+    <form method="POST" action="/saveProduto">
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="tamanho" class="form-label">Tamanho:</label>
+                <input type="number" name="tamanho" class="form-control" id="tamanho">
+            </div>
+
+            <div class="col-md">
+                <label for="estoque" class="form-label">Estoque:</label>
+                <input type="number" name="estoque" class="form-control" id="estoque">
+            </div>
+        </div>
+        <br>
+        <label>Modelo</label>
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="marca" class="form-label">Marca:</label>
+                <input type="text" name="marca" class="form-control" id="marca" aria-describedby="marca">
+            </div>
+
+            <div class="col-md">
+                <label for="cor" class="form-label">Cor:</label>
+                <input type="text" name="cor" class="form-control" id="cor">
+            </div>
+            <div class="col-md">
+                <label for="preco" class="form-label">Preço:</label>
+                <input type="number" name="preco" class="form-control" id="preco" aria-describedby="quantidade">
+            </div>
+        </div>
+        <br>
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="tipo" class="form-label">Escolha o Tipo:</label>
+               <select class="form-select" name="tipo" aria-label="Default select example">
+                    <option selected>Tipo do Calçado...</option>
+                    <option value="Tênis">Tênis</option>
+                    <option value="Sandália">Sandália</option>
+                    <option value="Chinelo">Chinelo</option>
+                    <option value="Salto">Salto</option>
+                    <option value="Sapatilha">Sapatilha</option>
+                </select> 
+            </div>
+        </div>
+        <select name="modelo" class="form-control">
+            <%= modelos.forEach((modelo) => { %>
+                <option value="<%=modelo.id%>"><%= modelo.marca %></option>
+                <option value="<%=modelo.id%>"><%= modelo.cor %></option>
+                <option value="<%=modelo.id%>"><%= modelo.preco %></option>
+                <option value="<%=modelo.id%>"><%= modelo.tipo %></option>
+
+            <=% }); %>
+            
+        </select>
+        <button type="submit" class="btn btn-outline-light">Salvar</button>
+      </form>
+</div>
+<%-include('../partials/footer.ejs');-%>

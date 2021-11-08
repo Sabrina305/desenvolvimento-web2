@@ -2,7 +2,16 @@ const express = require('express');
 const CreatUsuario = require('../criarTabelas/CreatUsuario');
 const router = express.Router();
 const bcryp = require('bcryptjs');
+//const auth = require("../middleware/userAuth");
 
+router.get ("/login", (req,res)=>{
+    res.render("login"); 
+});
+router.get("/logout",  (req,res)=>{
+    req.session. usuario = undefined; //quebrando o session
+    res.redirect("/login");
+})
+//acima foi feito agora
 router.get("/lists/listarUsuario", (req,res)=>{
     CreatUsuario.findAll({raw: true, order: [['nome', 'ASC']]}).then(usuarios=>{
             res.render("lists/listarUsuario", {
@@ -16,7 +25,7 @@ router.get("/forms/formUsuario",(req,res)=>{
     });
 });
 
-router.get("/usuarioEspe/:id",(req,res)=>{
+router.get("/usuarioEspe/:id", (req,res)=>{
     var id = req.params.id;
     CreatUsuario.findOne({where : {id:id}
     }).then(specific =>{
@@ -30,7 +39,7 @@ router.get("/usuarioEspe/:id",(req,res)=>{
         }
     })
 });
-router.get("/edit/editUsuario/:id",(req,res)=>{
+router.get("/edit/editUsuario/:id", (req,res)=>{
     var id = req.params.id;
 
     CreatUsuario.findByPk(id).then(usuario =>{
@@ -63,10 +72,11 @@ router.post("/saveUsuario",(req,res)=>{
                     email:email,
                     senha:hash
                 }).then(()=>{
-                    res.redirect("/lists/listarUsuario");
+                    res.redirect("/login");
                 })
         }else{
-            res.redirect("/lists/listarUsuario");
+            res.redirect("/forms/formUsuario");
+            //pensar em colocar um alerta aqui
         }
     });
     
@@ -92,5 +102,32 @@ router.post("/deleteUsuario",(req,res)=>{
     }).then(()=>{
         res.redirect("/lists/listarUsuario")
     })
+});
+//feito agora
+router.post("/autenticacao", (req,res)=>{
+    var email = req.body.email;
+    var senha = req.body.senha;
+    
+    if (email != undefined || senha != undefined){ //se o email e a senha não estiver vazio
+        CreatUsuario.findOne({
+            where: {email:email}
+        }).then(usuario => {
+            var checkSenha = bcryp.compareSync(senha, usuario.senha);
+            if(checkSenha){
+                req.session.usuario = {
+                    email : usuario.email
+                }; //se a senha estiver ok então...
+                res.redirect("/");
+            }else{
+                //se não está ok então...
+                //res.send("não esta ok");
+                res.redirect("/login");
+            }
+        })
+    }else{
+        res.redirect("/login");
+        //res.send("vazio")
+    }
+    
 });
 module.exports = router; 
