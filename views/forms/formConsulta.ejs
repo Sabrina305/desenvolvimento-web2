@@ -1,0 +1,59 @@
+<%-include ('../partials/head.ejs')-%>
+<%-include('../partials/nav.ejs');-%>
+<br>
+<div class="container" style="text-align: center;">
+    <hr>
+    <h1>CONSULTA</h1>
+    <hr>
+</div>
+<br>
+<div class="container">
+    <form method="POST" action="/saveConsulta">
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="data" class="form-label">Data:</label>
+                <input type="date" name="data" class="form-control" id="data" aria-describedby="data">
+            </div>
+            <div class="col-md">
+                <label for="hora" class="form-label">Hora:</label>
+                <input type="text" name="hora" class="form-control" id="hora" aria-describedby="hora">
+            </div>
+        </div>
+        <br>
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="tipo" class="form-label">Escolha o Tipo:</label>
+               <select class="form-select" name="tipo" aria-label="Default select example">
+                    <option selected>Tipo da Consulta...</option>
+                    <option value="manuntencao">Manuntenção</option>
+                    <option value="limpeza">Limpeza</option>
+                    <option value="obturacao">Obturação</option>
+                    <option value="extracao">Extração de Dente</option>
+                </select> 
+            </div>
+            <div class="col-md">
+                <label for="periodo" class="form-label">Escolha o Período:</label>
+               <select class="form-select" name="periodo" aria-label="Default select example">
+                    <option selected>Período...</option>
+                    <option value="manha">Manhã</option>
+                    <option value="tarde">Tarde</option>
+                </select> 
+            </div>
+        </div>
+        <br>
+        <div class="row g-2">
+            <div class="col-md">
+                <label>Cliente</label>
+                <select name="cliente" class="form-control">
+                    <% cliente.forEach((cliente) => { %>
+                    <option value="<%= cliente.id %>"><%= cliente.nome %></option>
+                   <% }) %>
+                    
+                </select>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-dark">Salvar</button>
+      </form>
+</div>
+<%-include('../partials/footer.ejs');-%>

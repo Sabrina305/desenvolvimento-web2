@@ -9,11 +9,15 @@ router.get("/lists/listarClientes", (req,res)=>{
             });
         });  
 });
+//inicio alteração
 router.get("/forms/formCliente",(req,res)=>{
+    var nomeErro = req.flash("nomeErro");
     res.render("forms/formCliente", {
+        nomeErro:nomeErro
 
     });
 });
+//fim
 router.get("/clienteEspe/:id",(req,res)=>{
     var id = req.params.id;
     CreatCliente.findOne({where : {id:id}
@@ -30,7 +34,6 @@ router.get("/clienteEspe/:id",(req,res)=>{
 });
 router.get("/edit/editCliente/:id",(req,res)=>{
     var id = req.params.id;
-
     CreatCliente.findByPk(id).then(cliente =>{
         if(isNaN(id)){
             res.redirect("/lists/listarClientes");
@@ -46,24 +49,29 @@ router.get("/edit/editCliente/:id",(req,res)=>{
         res.redirect("/lists/listarClientes");
     });
 });
+//inicio alteração 15/11
 router.post("/saveCliente",(req,res)=>{
-    var nome = req.body.nome;
-    var cidade = req.body.cidade;
-    var cpf = req.body.cpf;
-    var bairro = req.body.bairro;
-    var rua = req.body.rua;
-    var numbCasa = req.body.numbCasa;
-    CreatCliente.create({
+    var{nome,cidade,cpf,bairro,rua,numbCasa} = req.body;
+    var nomeErro;
+    if (nome == undefined || nome == ""){
+        nomeErro = "Campo vazio"
+        req.flash("nomeErro",nomeErro);
+        res.redirect("forms/formCliente");
+    }else{
+        CreatCliente.create({
         nome:nome,
         cidade:cidade,
         cpf:cpf,
         bairro:bairro,
         rua:rua,
         numbCasa:numbCasa
-    }).then(()=>{
-        res.redirect("/lists/listarClientes");
-    })
+        }).then(()=>{
+            res.redirect("/lists/listarClientes");
+        })
+    }
+    
 });
+//fim
 router.post("/updateCliente",(req,res)=>{
     var id = req.body.id;
     var nome = req.body.nome;

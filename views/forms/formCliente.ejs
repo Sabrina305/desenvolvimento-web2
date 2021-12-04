@@ -1,6 +1,12 @@
 <%-include ('../partials/head.ejs')-%>
 <%-include('../partials/nav.ejs');-%>
 <br>
+<div class="container" style="text-align: center;">
+    <hr>
+    <h1>NOVO PACIENTE</h1>
+    <hr>
+</div>
+<br>
 <div class="container">
     <form method="POST" action="/saveCliente">
         <div class="row g-2">
@@ -34,7 +40,7 @@
             </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-outline-light">Salvar</button>
+        <button type="submit" class="btn btn-outline-dark">Salvar</button>
       </form>
 </div>
 <%-include('../partials/footer.ejs');-%>

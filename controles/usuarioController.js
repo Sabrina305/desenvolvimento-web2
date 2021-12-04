@@ -2,16 +2,16 @@ const express = require('express');
 const CreatUsuario = require('../criarTabelas/CreatUsuario');
 const router = express.Router();
 const bcryp = require('bcryptjs');
-//const auth = require("../middleware/userAuth");
+
 
 router.get ("/login", (req,res)=>{
     res.render("login"); 
 });
 router.get("/logout",  (req,res)=>{
-    req.session. usuario = undefined; //quebrando o session
+    req.session. usuario = undefined;
     res.redirect("/login");
 })
-//acima foi feito agora
+
 router.get("/lists/listarUsuario", (req,res)=>{
     CreatUsuario.findAll({raw: true, order: [['nome', 'ASC']]}).then(usuarios=>{
             res.render("lists/listarUsuario", {
@@ -103,7 +103,6 @@ router.post("/deleteUsuario",(req,res)=>{
         res.redirect("/lists/listarUsuario")
     })
 });
-//feito agora
 router.post("/autenticacao", (req,res)=>{
     var email = req.body.email;
     var senha = req.body.senha;
@@ -120,7 +119,6 @@ router.post("/autenticacao", (req,res)=>{
                 res.redirect("/");
             }else{
                 //se não está ok então...
-                //res.send("não esta ok");
                 res.redirect("/login");
             }
         })
