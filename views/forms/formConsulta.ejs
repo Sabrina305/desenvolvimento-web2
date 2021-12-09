@@ -25,10 +25,10 @@
                 <label for="tipo" class="form-label">Escolha o Tipo:</label>
                <select class="form-select" name="tipo" aria-label="Default select example">
                     <option selected>Tipo da Consulta...</option>
-                    <option value="manuntencao">Manuntenção</option>
-                    <option value="limpeza">Limpeza</option>
-                    <option value="obturacao">Obturação</option>
-                    <option value="extracao">Extração de Dente</option>
+                    <option value="Manuntenção">Manuntenção</option>
+                    <option value="Limpeza">Limpeza</option>
+                    <option value="Obturação">Obturação</option>
+                    <option value="Extração de Dente">Extração de Dente</option>
                 </select> 
             </div>
             <div class="col-md">
@@ -43,12 +43,11 @@
         <br>
         <div class="row g-2">
             <div class="col-md">
-                <label>Cliente</label>
-                <select name="cliente" class="form-control">
+                <label for="cliente" class="form-label">Cliente:</label>
+                <select class="form-select" name="cliente" aria-label="Default select example">
                     <% cliente.forEach((cliente) => { %>
                     <option value="<%= cliente.id %>"><%= cliente.nome %></option>
-                   <% }) %>
-                    
+                   <% }) %>   
                 </select>
             </div>
         </div>

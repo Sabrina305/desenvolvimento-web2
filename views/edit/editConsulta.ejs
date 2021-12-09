@@ -1,0 +1,39 @@
+<%-include ('../partials/head.ejs')-%>
+<%-include('../partials/nav.ejs');-%>
+<br>
+<div class="container" style="text-align: center;">
+    <hr>
+    <h1>CONSULTA</h1>
+    <hr>
+</div>
+<br>
+<div class="container">
+
+    <form method="POST" action="/updateConsulta">
+  
+        <input type="hidden" name="id" value="<%- consulta.id %>">
+        <div class="row g-2">
+            <div class="col-md">
+                <label for="data" class="form-label">Data:</label>
+                <input type="text" name="data" value="<%- consulta.data %>" class="form-control" id="data">
+            </div>
+            <div class="col-md">
+                <label for="hora" class="form-label">Hora:</label>
+                <input type="text" name="hora" value="<%- consulta.hora %>" class="form-control" id="hora">
+            </div>
+            <div class="col-md">
+                <label for="tipo" class="form-label">Tipo:</label>
+                <input type="text" name="tipo" value="<%- consulta.tipo %>" class="form-control" id="tipo" aria-describedby="tipo">
+                
+            </div>
+
+            <div class="col-md">
+                <label for="cliente" class="form-label">Cliente:</label>
+                <input type="text" name="cliente" value="<%- consulta.creatClienteId %>" class="form-control" id="cliente" aria-describedby="cliente">
+            </div> 
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-dark">Salvar</button>
+      </form>
+</div>
+<%-include('../partials/footer.ejs');-%>

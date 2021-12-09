@@ -3,7 +3,7 @@ const connection = require('../banco/conector');
 const Cliente = require('../criarTabelas/CreatCliente');
 const CreatConsulta = connection.define('creatConsulta',{
     data:{
-        type:Sequelize.STRING,
+        type:Sequelize.DATE,
         allowNull: false
     },
     hora:{
@@ -23,6 +23,6 @@ Cliente.hasMany(CreatConsulta);
 CreatConsulta.belongsTo(Cliente);
 
 CreatConsulta.sync({force:false}).then(()=>{
-    console.log("Tabela consulta criada!");
+    console.log("Tabela Consulta criada!");
 });
 module.exports = CreatConsulta;

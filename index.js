@@ -28,7 +28,7 @@ app.use(express.static("public"));
 app.use(express.static("views"));
 app.use(session({
     secret : "shoesstore",
-    cookie : { maxAge : 1000000 },
+    cookie : { maxAge : 2000000 },
     resave: true,
     saveUninitialized: true
 }));
@@ -41,7 +41,7 @@ app.use("/",usuarioController);
 app.use("/", consultaController);
 app.listen(8000,()=>{ console.log("Programa em execução")});
 
-app.get("/", (req,res)=>{
+app.get("/",auth, (req,res)=>{
     //colocar o auth, depois
     res.render("index",{
 
