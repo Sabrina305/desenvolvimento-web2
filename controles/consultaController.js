@@ -2,7 +2,7 @@ const express = require('express');
 const CreatConsulta = require('../criarTabelas/CreatConsulta');
 const router = express.Router();
 const Cliente = require('../criarTabelas/CreatCliente');
-
+//arquivo que contem a execução de cada função consulta
 router.get("/lists/listarConsulta", (req,res)=>{
     CreatConsulta.findAll({raw: true, order: [['data', 'ASC']]}).then(consulta=>{
         include : [{model : Cliente, required:true}]
@@ -10,11 +10,14 @@ router.get("/lists/listarConsulta", (req,res)=>{
             consulta:consulta
             }) 
         });  
+    //chama para a execução o arquivo listarConsulta
 });
 router.get("/forms/formConsulta",(req,res)=>{
     Cliente.findAll().then(cliente=>{
         res.render("forms/formConsulta",{cliente : cliente});
-    })   
+    })  
+    //cadastro de nova consulta 
+    //chama para a execução o arquivo formConsulta
 });
 router.get("/edit/editConsulta/:id", (req,res)=>{
     var id = req.params.id;
@@ -36,7 +39,9 @@ router.get("/edit/editConsulta/:id", (req,res)=>{
     }).catch(erro =>{
         res.redirect("/lists/listarConsulta");
     });
+    //chama para a execução o arquivo editConsulta
 });
+//funções post é usada nos botões
 router.post("/saveConsulta",(req,res)=>{
     var data = req.body.data;
     var hora = req.body.hora;
@@ -69,7 +74,6 @@ router.post("/deleteConsulta",(req,res)=>{
         res.redirect("/lists/listarConsulta")
     })
 });
-//aqui abaixo
 router.post("/updateConsulta",(req,res)=>{
     var id = req.body.id;
     var data = req.body.data;
@@ -84,7 +88,6 @@ router.post("/updateConsulta",(req,res)=>{
         tipo:tipo,
         periodo:periodo,
         paciente:cliente},{where:{id:id}
-
     }).then(()=>{
         res.redirect("/lists/listarConsulta");
     });

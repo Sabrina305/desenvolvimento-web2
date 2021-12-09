@@ -1,3 +1,4 @@
+//arquivo responsavel por conectar o projeto com o mysql(workbench)
 const Sequelize = require ('sequelize');
 const connection = new Sequelize('projeto','root','0530-jbae1997',{
     host:'localhost',

@@ -1,10 +1,10 @@
-const express = require("express"); //chamando a biblioteca
+const express = require("express"); //chamando  biblioteca
 const app = express();//para rodar a biblioteca
 const bodyParser = require("body-parser");
-const session = require("express-session");
-const auth = require ("./middleware/userAuth");
+const session = require("express-session");//usado no login
+const auth = require ("./middleware/userAuth");//usado no login
 const flash = require("express-flash");
-const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");//usado no login
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
@@ -31,10 +31,10 @@ app.use(session({
     cookie : { maxAge : 2000000 },
     resave: true,
     saveUninitialized: true
-}));
+})); //usado no login
 
-app.use(cookieParser());
-app.use(flash());
+app.use(cookieParser());//usado no login
+app.use(flash());//usado no login
 
 app.use("/",clienteController);
 app.use("/",usuarioController);
@@ -42,7 +42,7 @@ app.use("/", consultaController);
 app.listen(8000,()=>{ console.log("Programa em execução")});
 
 app.get("/",auth, (req,res)=>{
-    //colocar o auth, depois
+    //o auth, serve para a tela de login aparecer
     res.render("index",{
 
     });

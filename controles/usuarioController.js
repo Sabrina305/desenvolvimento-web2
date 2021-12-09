@@ -1,8 +1,8 @@
 const express = require('express');
 const CreatUsuario = require('../criarTabelas/CreatUsuario');
 const router = express.Router();
-const bcryp = require('bcryptjs');
-
+const bcryp = require('bcryptjs'); //serve para manter as senhas seguras
+//arquivo que contem a execução de cada função usurario
 
 router.get ("/login", (req,res)=>{
     res.render("login"); 
@@ -21,7 +21,7 @@ router.get("/lists/listarUsuario", (req,res)=>{
 });
 router.get("/forms/formUsuario",(req,res)=>{
     res.render("forms/formUsuario", {
-
+//formulario de cadastro
     });
 });
 
@@ -38,6 +38,7 @@ router.get("/usuarioEspe/:id", (req,res)=>{
            res.redirect("/lists/listarUsuario");
         }
     })
+    //pesquisa especifica
 });
 router.get("/edit/editUsuario/:id", (req,res)=>{
     var id = req.params.id;
@@ -57,7 +58,7 @@ router.get("/edit/editUsuario/:id", (req,res)=>{
         res.redirect("/lists/listarUsuario");
     });
 });
-
+//funções post é usada nos botões
 router.post("/saveUsuario",(req,res)=>{
     var nome = req.body.nome;
     var email = req.body.email;
@@ -124,7 +125,7 @@ router.post("/autenticacao", (req,res)=>{
         })
     }else{
         res.redirect("/login");
-        //res.send("vazio")
+        
     }
     
 });

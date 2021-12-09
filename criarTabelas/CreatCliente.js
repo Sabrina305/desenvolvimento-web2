@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const connection = require('../banco/conector');
-
+//esse arquivo serve para criar a tabela no mysql
 const CreatCliente = connection.define('creatCliente',{
     nome:{
         type:Sequelize.STRING,

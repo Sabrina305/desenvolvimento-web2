@@ -1,6 +1,6 @@
+//esse arquivo serve para criar a tabela no mysql
 const Sequelize = require('sequelize');
 const connection = require('../banco/conector');
-
 const CreatUsuario = connection.define('creatUsuario',{
     nome:{
         type:Sequelize.STRING,
