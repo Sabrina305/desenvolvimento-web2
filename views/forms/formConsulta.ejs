@@ -12,7 +12,7 @@
         <div class="row g-2">
             <div class="col-md">
                 <label for="data" class="form-label">Data:</label>
-                <input type="date" name="data" class="form-control" id="data" aria-describedby="data">
+                <input type="text" name="data" class="form-control" id="data" aria-describedby="data">
             </div>
             <div class="col-md">
                 <label for="hora" class="form-label">Hora:</label>
@@ -35,8 +35,8 @@
                 <label for="periodo" class="form-label">Escolha o Período:</label>
                <select class="form-select" name="periodo" aria-label="Default select example">
                     <option selected>Período...</option>
-                    <option value="manha">Manhã</option>
-                    <option value="tarde">Tarde</option>
+                    <option value="Manhã">Manhã</option>
+                    <option value="Tarde">Tarde</option>
                 </select> 
             </div>
         </div>
@@ -46,7 +46,7 @@
                 <label for="cliente" class="form-label">Cliente:</label>
                 <select class="form-select" name="cliente" aria-label="Default select example">
                     <% cliente.forEach((cliente) => { %>
-                    <option value="<%= cliente.id %>"><%= cliente.nome %></option>
+                    <option value="<%= cliente.nome %>"><%= cliente.nome %></option>
                    <% }) %>   
                 </select>
             </div>

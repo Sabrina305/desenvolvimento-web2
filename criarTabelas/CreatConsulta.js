@@ -3,7 +3,7 @@ const connection = require('../banco/conector');
 const Cliente = require('../criarTabelas/CreatCliente');
 const CreatConsulta = connection.define('creatConsulta',{
     data:{
-        type:Sequelize.DATE,
+        type:Sequelize.STRING,
         allowNull: false
     },
     hora:{
@@ -15,6 +15,10 @@ const CreatConsulta = connection.define('creatConsulta',{
         allowNull: false
     },
     periodo:{
+        type:Sequelize.STRING,
+        allowNull: false
+    },
+    paciente:{
         type:Sequelize.STRING,
         allowNull: false
     }

@@ -5,7 +5,7 @@ const Cliente = require('../criarTabelas/CreatCliente');
 
 router.get("/lists/listarConsulta", (req,res)=>{
     CreatConsulta.findAll({raw: true, order: [['data', 'ASC']]}).then(consulta=>{
-        include : [{model : Cliente}]
+        include : [{model : Cliente, required:true}]
         res.render("lists/listarConsulta", {
             consulta:consulta
             }) 
@@ -50,7 +50,7 @@ router.post("/saveConsulta",(req,res)=>{
             hora:hora,
             tipo:tipo,
             periodo:periodo,
-            creatClienteId:cliente
+            paciente:cliente
         }).then(()=>{
             res.redirect("/lists/listarConsulta");
         })
@@ -83,7 +83,7 @@ router.post("/updateConsulta",(req,res)=>{
         hora:hora,
         tipo:tipo,
         periodo:periodo,
-        creatClienteId:cliente},{where:{id:id}
+        paciente:cliente},{where:{id:id}
 
     }).then(()=>{
         res.redirect("/lists/listarConsulta");
